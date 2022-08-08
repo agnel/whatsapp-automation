@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 
 router.get('/webhook', (req, res) => {
   console.log(req);
-  let data = req.body;
-  let mode = data.hub.mode;
-  let challange = data.hub.challenge;
-  let token = data.hub.verify_token;
+  let data = req.query;
+  let mode = data["hub.mode"];
+  let challange = data["hub.challenge"];
+  let token = data["hub.verify_token"];
 
   if (mode && token) {
     if (mode === 'subscribe' && token === mytoken) {
